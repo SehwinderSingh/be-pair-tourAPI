@@ -6,7 +6,14 @@ const getAllTours = (req, res) => {
 };
 
 const createTour = (req, res) => {
-    res.json({ message: "Hello from createTour" });
+    const {name, info, image, price, location} = req.body;
+    const tour = Tour.addOne(name, info, image, price, location);
+    if(tour){
+        res.status(201).json(tour);
+    }else{
+        res.json({message: "Failed to create"});
+    }
+
 };
 
 const getTourById = (req, res) => {
