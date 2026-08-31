@@ -2,9 +2,20 @@ let tours = [];
 let nextId = 1;
 
 const addOne = (name, info, image, price, location) => {
-  const tour = { id: nextId++, name, info, image, price, location };
-  tours.push(tour);
-  return tour;
+  if (!name || !info || !image || !price || !location) {
+    return null;
+  } else {
+    const tour = {
+      id: nextId++,
+      name,
+      info,
+      image,
+      price,
+      location
+    };
+    tours.push(tour);
+    return tour;
+  }
 };
 
 const getAll = () => tours;
@@ -23,19 +34,19 @@ const update = (id, data) => {
   const findTour = tours.find((item) => item.id === Number(id));
 
   if (findTour) {
-    if (data.name) {
+    if (data.name !== undefined) {
       findTour.name = data.name;
     }
-    if (data.info) {
+    if (data.info !== undefined) {
       findTour.info = data.info;
     }
-    if (data.image) {
+    if (data.image !== undefined) {
       findTour.image = data.image;
     }
-    if (data.price) {
+    if (data.price !==undefined) {
       findTour.price = data.price;
     }
-    if (data.location) {
+    if (data.location !== undefined) {
       findTour.location = data.location;
     }
     return findTour;

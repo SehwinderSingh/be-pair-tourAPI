@@ -11,7 +11,7 @@ const createTour = (req, res) => {
     if(tour){
         res.status(201).json(tour);
     }else{
-        res.json({message: "Failed to create"});
+        res.status(400).json({message: "Some field missing"});
     }
 
 };
