@@ -1,4 +1,4 @@
-const tours = [];
+let tours = [];
 let nextId = 1;
 
 const addOne = (name, info, image, price, location) => {
@@ -15,30 +15,40 @@ const findById = (id) => {
   })
   if (findTour) {
     return findTour;
-  } 
+  }
   return null;
 }
 
 const update = (id, data) => {
   const findTour = tours.find((item) => item.id === Number(id));
-  
-  if (findTour){
-    if(data.name){
+
+  if (findTour) {
+    if (data.name) {
       findTour.name = data.name;
     }
-    if (data.info){
+    if (data.info) {
       findTour.info = data.info;
     }
-    if (data.image){
+    if (data.image) {
       findTour.image = data.image;
     }
-    if (data.price){
+    if (data.price) {
       findTour.price = data.price;
     }
-    if (data.location){
+    if (data.location) {
       findTour.location = data.location;
     }
     return findTour;
+  }
+  return null;
+}
+
+const deleteOne = (id) => {
+  const tourExist = findById(Number(id));
+  const initialArray = tours.length;
+  if (tourExist) {
+    tours = tours.filter((item) => item.id !== Number(id));
+    return initialArray > tours.length
   }
   return null;
 }
@@ -65,4 +75,4 @@ if (require.main === module) {
 }
 
 
-module.exports = { addOne, getAll, findById, update};
+module.exports = { addOne, getAll, findById, update, deleteOne };
