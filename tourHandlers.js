@@ -17,7 +17,14 @@ const createTour = (req, res) => {
 };
 
 const getTourById = (req, res) => {
-    res.json({ message: "Hello from getTourById" });
+    const tourId = req.params.tourId;
+    const tourById = Tour.findById(tourId);
+    if (tourById){
+        res.status(200).json(tourById);
+    }else{
+        res.sendStatus(404);
+    }
+
 };
 
 const updateTour = (req, res) => {

@@ -9,6 +9,17 @@ const addOne = (name, info, image, price, location) => {
 
 const getAll = () => tours;
 
+const findById = (id) => {
+  const findTour = tours.find((item) => {
+    return item.id === Number(id);
+  })
+  if (findTour) {
+    return findTour;
+  } 
+  return null;
+}
+
+
 if (require.main === module) {
   addOne(
     "Paris in 7 Days",
@@ -30,4 +41,4 @@ if (require.main === module) {
 }
 
 
-module.exports = { addOne, getAll };
+module.exports = { addOne, getAll, findById };

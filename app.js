@@ -14,9 +14,9 @@ app.use(express.json());
 
 app.get('/tours', getAllTours);
 app.post('/tours', createTour);
-app.get('/tours/:id', getTourById);
-app.patch('/tours/:id', updateTour);
-app.delete('/tours/:id', deleteTour);
+app.get('/tours/:tourId', getTourById);
+app.patch('/tours/:tourId', updateTour);
+app.delete('/tours/:tourId', deleteTour);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
